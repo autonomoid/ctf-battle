@@ -2,7 +2,7 @@
 * Create a scheduled task that runs every X minutes indefinitely.
 
 # Execution Notes
-* Replace "notepad.exe" in do_this.txt with whatever you need the scheduled task to launch.
+* do_this.txt must contain a base64-encoded string for PowerShell to run.
 * Run .\build.ps1 to create output.vbs.
 * The output file is called "msdefender_updater_v1.0.3.vbs".
 * To launch the output file open an elevated command prompt and use 'wscript.exe msdefender_updater_v1.0.3.vbs'.
