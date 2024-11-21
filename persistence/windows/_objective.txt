@@ -1,0 +1,109 @@
+Maintain privileged access
+
+1. Create an account for remote access.
+2. Create a C2 channel.
+3. Create SMB shares
+
+# Notes
+
+Strategies to Avoid a Single Point of Failure
+1. Diversify Triggers
+
+Use multiple, unrelated triggers for your persistence mechanisms so that detecting one doesn’t lead to detecting the others.
+
+    Examples of Independent Triggers:
+        Scheduled Task for downloading PowerShell commands.
+        A COM hijack that triggers upon the execution of a specific application.
+        A startup folder shortcut or registry Run key entry.
+        A WMI event subscription triggered by time or system events.
+        DLL hijacking in a trusted executable.
+
+By mixing these triggers, each persistence mechanism operates independently.
+
+2. Stagger Activation
+
+Introduce delays or staggered activation for your mechanisms so that they don’t all execute immediately or depend on each other.
+
+    Example:
+        The scheduled task triggers every hour and pulls one persistence mechanism at random from your GitHub repository.
+        Your COM hijack is passive until a specific application (e.g., explorer.exe) runs.
+        Registry-based mechanisms activate only on system startup.
+
+This makes detection harder because all persistence mechanisms don’t execute in a predictable manner.
+
+3. Use Decoy Mechanisms
+
+Set up a decoy persistence mechanism to act as a honeypot and divert attention from the real ones.
+
+    Example:
+        A highly visible scheduled task that appears to run a benign script or slightly obfuscated payload.
+        Meanwhile, your COM hijack or a stealthy registry-based mechanism handles the actual persistence.
+
+4. Redundant Mechanisms
+
+Ensure there is overlap and redundancy in your persistence mechanisms so that even if one is removed, others can recreate it.
+
+    Example:
+        The scheduled task periodically re-adds a removed COM hijack.
+        The COM hijack triggers a script to restore a missing scheduled task or registry key.
+
+This creates a self-healing mechanism where persistence elements regenerate each other.
+
+5. Distribute the Configuration
+
+Avoid hardcoding all persistence mechanisms in a single script. Use distributed logic:
+
+    The PowerShell commands pulled from GitHub can be modular, with each script focusing on a single persistence mechanism.
+    Use encrypted payloads for each mechanism, decrypted only when needed.
+
+6. Encrypt and Obfuscate
+
+Encrypt or obfuscate the logic of each persistence mechanism to prevent easy reverse-engineering.
+
+    Obfuscation Techniques:
+        Use base64 encoding and split payloads across multiple scripts.
+        Compress and encrypt payloads to require decryption at runtime.
+
+7. Hide the Scheduled Task
+
+Minimize the visibility of the scheduled task to make it harder to identify and delete:
+
+    Set the hidden attribute using the -Hidden flag in PowerShell.
+    Use a benign or misleading name, like "Windows Update Monitor", for the scheduled task.
+
+Example Workflow for Resilience
+
+    Scheduled Task:
+        A visible yet obfuscated scheduled task runs every 50 minutes to download additional scripts from GitHub.
+
+    COM Hijack:
+        Replaces the behavior of a commonly used application (e.g., MMC or Explorer).
+
+    Registry-Based Mechanism:
+        Uses a Run or RunOnce key to execute a hidden script.
+
+    DLL Hijack:
+        Replaces a trusted DLL in a vulnerable application's directory.
+
+    Self-Healing:
+        Each mechanism checks for the presence of others and re-creates them if missing.
+
+Categories of Persistence Mechanisms
+
+    File-Based Persistence
+        Creating or modifying files to ensure your payload is present and executed under specific conditions.
+
+    Registry-Based Persistence
+        Leveraging the Windows registry to execute or reinstall payloads.
+
+    In-Memory Persistence
+        Avoiding disk-based artifacts by keeping payloads in memory.
+
+    Process Injection
+        Embedding your payload in a legitimate process to hide in plain sight.
+
+    Network-Based Persistence
+        Using remote servers to maintain persistence and pull new payloads.
+
+    Compound Mechanisms
+        Mechanisms that regenerate each other to avoid full removal.

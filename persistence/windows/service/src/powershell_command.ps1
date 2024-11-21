@@ -1,0 +1,1 @@
+New-Service -Name "MicrosoftDefenderUpdate" -BinaryPathName "C:\Path\To\YourScript.ps1" -DisplayName "Microsoft Defender Update Service" -StartupType Automatic

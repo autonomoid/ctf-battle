@@ -44,7 +44,7 @@ Generate-Script -GeneratorPath ".\src\b64_powershell_wrapper.ps1" `
 
 # Cleanup: Delete the generated PowerShell script after use
 if (Test-Path ".\src\powershell_command.ps1") {
-    #Remove-Item -Path ".\src\powershell_command.ps1" -Force
+    Remove-Item -Path ".\src\powershell_command.ps1" -Force
 }
 
 Write-Host "Have fun ;)"

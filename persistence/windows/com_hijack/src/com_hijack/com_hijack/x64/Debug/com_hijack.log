@@ -1,0 +1,11 @@
+﻿  pch.cpp
+  dllmain.cpp
+C:\Users\auton\OneDrive\Documents\src\ctf-battle\persistence\windows\com_hijack\src\com_hijack\dllmain.cpp(12,9): error C2664: 'int MessageBoxW(HWND,LPCWSTR,LPCWSTR,UINT)': cannot convert argument 2 from 'const char [35]' to 'LPCWSTR'
+  (compiling source file '/dllmain.cpp')
+      C:\Users\auton\OneDrive\Documents\src\ctf-battle\persistence\windows\com_hijack\src\com_hijack\dllmain.cpp(12,26):
+      Types pointed to are unrelated; conversion requires reinterpret_cast, C-style cast or parenthesized function-style cast
+      C:\Program Files (x86)\Windows Kits\10\Include\10.0.22621.0\um\winuser.h(9180,1):
+      see declaration of 'MessageBoxW'
+      C:\Users\auton\OneDrive\Documents\src\ctf-battle\persistence\windows\com_hijack\src\com_hijack\dllmain.cpp(12,9):
+      while trying to match the argument list '(int, const char [35], const char [25], long)'
+  

