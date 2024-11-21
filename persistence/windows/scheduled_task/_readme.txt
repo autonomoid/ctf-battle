@@ -16,3 +16,4 @@
 # Notes
 * You have to manully copy and paste the output of b64_powershell_wrapper into b64_command_runner.vbs.
 * You have to places "notepad.exe" in powershell_command.ps1 with whatever you need the task to launch.
+* For operational use rename b64_command_runner.vbs to something less conspiculous.
