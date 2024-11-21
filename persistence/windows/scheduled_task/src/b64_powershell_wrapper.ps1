@@ -1,4 +1,4 @@
-$filePath = "powershell_command.ps1"
+$filePath = ".\src\powershell_command.ps1"
 $inner_command = Get-Content -Path $filePath -Raw
 
 $bytes = [System.Text.Encoding]::Unicode.GetBytes($inner_command)

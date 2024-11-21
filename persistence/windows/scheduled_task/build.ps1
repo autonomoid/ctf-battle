@@ -34,16 +34,16 @@ function Generate-Script {
 }
 
 Generate-Script -GeneratorPath ".\do_this.txt" `
-                -TemplatePath ".\powershell_command_template.ps1" `
-                -OutputPath ".\powershell_command.ps1"
+                -TemplatePath ".\src\powershell_command_template.ps1" `
+                -OutputPath ".\src\powershell_command.ps1"
 
-Generate-Script -GeneratorPath ".\b64_powershell_wrapper.ps1" `
-                -TemplatePath ".\b64_command_runner_template.vbs" `
+Generate-Script -GeneratorPath ".\src\b64_powershell_wrapper.ps1" `
+                -TemplatePath ".\src\b64_command_runner_template.vbs" `
                 -OutputPath ".\output.vbs"
 
 # Cleanup: Delete the generated PowerShell script after use
-if (Test-Path ".\powershell_command.ps1") {
-    Remove-Item -Path ".\powershell_command.ps1" -Force
+if (Test-Path ".\src\powershell_command.ps1") {
+    Remove-Item -Path ".\src\powershell_command.ps1" -Force
 }
 
 Write-Host "Have fun ;)"
