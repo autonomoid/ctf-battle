@@ -1,3 +1,21 @@
+Persistence
+
+    Definition: The ability to survive a reboot or user intervention to re-establish control over a compromised system.
+
+    Purpose: Ensures your payload or mechanism remains active even after the system is rebooted or if your session is terminated.
+
+    Key Characteristics:
+        Focused on embedding mechanisms to re-trigger or reload your access payload.
+        Tied to triggers like scheduled tasks, registry keys, or DLL hijacking.
+
+    Examples:
+        A scheduled task runs a PowerShell script every hour.
+        A registry Run key executes a reverse shell on user login.
+        A COM hijack loads a malicious DLL when a trusted program starts.
+
+    Persistence is Passive:
+        By itself, persistence doesn’t provide direct access or communication; it only ensures the payload or mechanism remains present.
+
 Maintain privileged access
 
 1. Create an account for remote access.

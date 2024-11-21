@@ -1,6 +1,4 @@
-The schedule task runs a b64 encoded powershell script.
-
-The powershell script is a downloader.
+The powershell script is a file downloader.
 The downloader pulls commands from github and stores them in the registry.
 The downloader runs the command in the registry.
 If it is unable to download then it runs what is in the registry.
