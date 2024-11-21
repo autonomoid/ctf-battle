@@ -4,7 +4,8 @@
 # Execution Notes
 * Replace "notepad.exe" in do_this.txt with whatever you need the scheduled task to launch.
 * Run .\build.ps1 to create output.vbs.
-* To launch the output.vbs open cmd.exe and use 'wscript.exe output.vbs'.
+* The output file is called "msdefender_updater_v1.0.3.vbs".
+* To launch the output file open an elevated command prompt and use 'wscript.exe msdefender_updater_v1.0.3.vbs'.
 * To verfiy it was successful, open Task Scheduler from the Start menu. Look for a task called "MicrosoftDefenderUpdate".
 
 # Files

