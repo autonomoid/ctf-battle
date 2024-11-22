@@ -1,12 +1,13 @@
 import socket
 
-def start_listener(host='0.0.0.0', port=1234):
+def start_listener(host='0.0.0.0', port=2997):
     """
     A Python-based netcat-like listener that accepts connections and sends commands to a reverse shell.
     """
     try:
         # Create a TCP socket
         server_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+        server_socket.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)  # Enable port reuse
         server_socket.bind((host, port))
         server_socket.listen(1)
         print(f"[+] Listening on {host}:{port}")
